@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { StyleSheet, ScrollView, Text } from "react-native";
 import Post from "./Post";
 
-export default function Feed() {
+export default function Feed({ navigation }) { // this comes from the Stack.Navigator component
 	const [post, setPost] = useState();
 
 	useEffect(() => {
@@ -18,7 +18,7 @@ export default function Feed() {
 				<Text>Loading...</Text>
 			) : (
 				post.map((posts) => (
-                    <Post key={posts.photoId} post={posts} likes={likes}/>
+                    <Post key={posts.photoId} post={posts} navigation={navigation}/>
 				))
 			)}
 		</ScrollView>
@@ -27,8 +27,7 @@ export default function Feed() {
 
 const styles = StyleSheet.create({
 	feed: {
-		backgroundColor: "#f4f5f6",
-		marginTop: 40,
+		backgroundColor: "#023047",
 		width: "100%",
 	},
 });
